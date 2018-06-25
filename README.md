@@ -20,3 +20,8 @@ Hardware
 I built this using an ATTiny85, a battery (CR2032), a pushbutton for reset, a
 small speaker, a LED and a resistor for the LED. A simple sketch of the wiring
 from the ATTiny view is available in `src/main.c`.
+
+Software
+========
+I have been using sonic-visualiser to figure out notes, and mscore to note down
+the sheet music.
