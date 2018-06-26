@@ -16,6 +16,7 @@ AVRDUDE_ISP=usbasp #-clone ?
 
 CC=avr-gcc
 CFLAGS=-mmcu=$(GCC_CPU) -Os -Wall -DF_CPU=1000000L
+#CFLAGS+=-DDEBUG_PLAY_ALL
 OBJCOPY=avr-objcopy
 OBJARGS=-j .text -j .data -O ihex
 AVRDUDE=$(AVRDUDE_SUDO) avrdude -p $(ISP_CPU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_ISP)

@@ -326,22 +326,16 @@ int main(void)
 	while ((r = rng_get()) > (255 - (256 % NUM_MELODIES)));
 	r %= NUM_MELODIES;
 
-	/* Use LED to display number of melodies */
-	//for (uint8_t i = 0; i < NUM_MELODIES; i++) {
-	//	LED_ON();
-	//	_delay_ms(30);
-	//	LED_OFF();
-	//	_delay_ms(500);
-	//}
-
+#ifdef DEBUG_PLAY_ALL
+	/* Play all melodies */
+	for (uint8_t i = 0; i < NUM_MELODIES; i++) {
+		play(melodies[i]);
+		_delay_ms(1000);
+	}
+#else
 	/* Play a random melody */
 	play(melodies[r]);
-
-	/* Play all melodies */
-	//for (uint8_t i = 0; i < NUM_MELODIES; i++) {
-	//	play(melodies[i]);
-	//	_delay_ms(1000);
-	//}
+#endif
 
 	/* Put everything to sleep (~1uA) */
 	PORTB = 0;
