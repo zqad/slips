@@ -176,7 +176,6 @@ PROGMEM const struct melody jinglebells = {
 	},
 };
 
-/* TODO: This needs more work */
 PROGMEM const struct melody mer_jul = {
 	.delay_func = delay_1800,
 	.notes = {
@@ -191,21 +190,21 @@ PROGMEM const struct melody mer_jul = {
 		{ .o=5, .t=Ds,	.d=half },
 		{ .o=5, .t=D,	.d=half, .dots=1 },
 		{ .o=5, .t=D,	.d=eighth },
-		{ .o=5, .t=D,	.d=eighth },
-
-		{ .o=5, .t=D,	.d=half },
+		{ .o=5, .t=D,	.d=quarter, .tie=1 },
 		{ .o=5, .t=D,	.d=half },
 
+		{ .o=5, .t=D,	.d=half },
 		{ .o=5, .t=C,	.d=half },
+
 		{ .o=4, .t=A,	.d=eighth },
 		{ .o=5, .t=C,	.d=eighth },
 		{ .o=5, .t=C,	.d=quarter },
+		{ .o=5, .t=C,	.d=eighth, .dots=1 },
+		{ .t=R,		.d=sixteenth },
+		{ .t=R,		.d=quarter },
 
-		{ .o=5, .t=C,	.d=half },
 		{ .o=5, .t=Ds,	.d=half },
-
-		{ .o=5, .t=D,	.d=whole },
-
+		{ .o=5, .t=D,	.d=half, .dots=1 },
 
 		{ .t=End }
 	},
