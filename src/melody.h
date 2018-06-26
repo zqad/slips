@@ -34,7 +34,7 @@ enum divider {
 struct __attribute__((packed)) note {
 	uint8_t o:3;
 	enum tone t:4;
-	uint8_t __padding:1;
+	uint8_t tie:1;
 	enum divider d:3;
 	uint8_t dots:2;
 };

@@ -329,7 +329,8 @@ int main(void)
 			current_data = data;
 rest:
 			delay_func(note.d, note.dots);
-			current_data = NULL;
+			if (!note.tie)
+				current_data = NULL;
 			Pa_Sleep( 10 );
 		}
 		Pa_Sleep(1000);

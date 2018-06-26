@@ -248,14 +248,22 @@ static void play(const struct melody *melody_pgm) {
 rest:
 		delay_func(note->d, note->dots);
 
-		/* Stop the timer */
-		TCCR1 &= ~((1<<CS13)|(1<<CS12)|(1<<CS11)|(1<<CS10));
+		/* Terminate the note unless there is a tie marker */
+		if (!note->tie) {
+			/* Stop the timer */
+			TCCR1 &= ~((1<<CS13)|(1<<CS12)|(1<<CS11)|(1<<CS10));
+		}
 
-		/* Wait for the instrument to die out */
+		/* Wait for the instrument to die out / fill out so that the
+		 * notes are the same length */
 		_delay_ms(10);
 
 	}
+	/* Switch off the LED */
 	LED_OFF();
+
+	/* Stop the timer */
+	TCCR1 &= ~((1<<CS13)|(1<<CS12)|(1<<CS11)|(1<<CS10));
 }
 
 uint8_t rng_a = 42;
