@@ -10,16 +10,16 @@ args = parser.parse_args()
 
 note_names = [
     'C',
-    'CS',
+    'Cs',
     'D',
-    'DS',
+    'Ds',
     'E',
     'F',
-    'FS',
+    'Fs',
     'G',
-    'GS',
+    'Gs',
     'A',
-    'AS',
+    'As',
     'B',
 ]
 
@@ -49,10 +49,10 @@ for octave in range(0, 8):
                 # One full period == 0 -> OCR1A -> OCR1C. We use ocr for OCR1A and
                 # 2*ocr for OCR1C, so count the divisor double.
                 f_tck = F_CPU / (divisor*2)
-            print("\t\t.note_{} = {{{}, N_{}}}, /* {}Hz */".format(note_names[note],
-                                                                   round(ocr),
-                                                                   divisor,
-                                                                   round(freq, 2)))
+            print("\t\t.note_{:2s} = {{{:3d}, N_{:<3d}}}, /* {:6.2f}Hz */".format(note_names[note],
+                                                                                  round(ocr),
+                                                                                  divisor,
+                                                                                  round(freq, 2)))
     print("\t},")
 print("};")
 
