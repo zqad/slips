@@ -1,3 +1,5 @@
+#ifndef _MELODY_H
+#define _MELODY_H
 #include <stdint.h>
 
 enum tone {
@@ -44,6 +46,11 @@ struct melody {
 	struct note notes[];
 };
 
+struct name_melody {
+	const struct melody* melody;
+	const char *name;
+};
+
 #define _DEFINE_DELAY_FUNC(NAME, WHOLE, INTERNAL_DELAY_FUNC) \
 static void NAME(uint8_t divider, uint8_t dots) { \
 	switch (divider) { \
@@ -80,4 +87,6 @@ static void NAME(uint8_t divider, uint8_t dots) { \
 #else
 #include <util/delay.h>
 #define DEFINE_DELAY_FUNC(NAME, WHOLE) _DEFINE_DELAY_FUNC(NAME, WHOLE, _delay_ms)
+#endif
+
 #endif

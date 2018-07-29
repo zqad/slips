@@ -44,6 +44,7 @@
 #include "melody.h"
 #include <stdio.h>
 #include <math.h>
+#include <errno.h>
 #include <stdlib.h>
 #include "portaudio.h"
 #define NUM_SECONDS   (5)
@@ -251,7 +252,6 @@ static void StreamFinished( void* userData )
 	printf( "Stream Completed\n");
 }
 /*******************************************************************/
-int main(void);
 
 #define play(data, duration) do { \
 	_play(data, duration); \
@@ -261,7 +261,28 @@ void _play(paTestData *data, long duration) {
 
 }
 
-int main(void)
+void play_melody(const struct melody *melody) {
+	void (*delay_func)(uint8_t, uint8_t) = melody->delay_func;
+	for (int i = 0; 1; i++) {
+		struct note note = melody->notes[i];
+		if (note.t == End)
+			break;
+
+		if (note.t == R)
+			goto rest;
+
+		paTestData *data = &octaves[note.o].notes[note.t];
+		data->phase = 0;
+		current_data = data;
+rest:
+		delay_func(note.d, note.dots);
+		if (!note.tie)
+			current_data = NULL;
+		Pa_Sleep( 10 );
+	}
+}
+
+int main(int argc, char *argv[])
 {
 	PaStreamParameters outputParameters;
 	PaStream *stream;
@@ -271,7 +292,6 @@ int main(void)
 	for (int octave = 0; octave < 8; octave++) {
 		for (int note = 0; note < 12; note++) {
 			data = &((_octave_t *)&octaves[octave])->data[note];
-			printf("%d %d\n", octave, note);
 			int wavelength = SAMPLE_RATE / data->freq;
 			data->sine = calloc(wavelength, sizeof(float));
 			data->table_size = wavelength;
@@ -314,26 +334,38 @@ int main(void)
 	err = Pa_StartStream( stream );
 	if( err != paNoError ) goto error;
 
-	for (int j = 0; j < NUM_MELODIES; j++) {
-		void (*delay_func)(uint8_t, uint8_t) = melodies[j]->delay_func;
-		for (int i = 0; 1; i++) {
-			struct note note = melodies[j]->notes[i];
-			if (note.t == End)
-				break;
-
-			if (note.t == R)
-				goto rest;
-
-			paTestData *data = &octaves[note.o].notes[note.t];
-			data->phase = 0;
-			current_data = data;
-rest:
-			delay_func(note.d, note.dots);
-			if (!note.tie)
-				current_data = NULL;
-			Pa_Sleep( 10 );
+	if (argc == 1) {
+		for (int i = 0; i < NUM_MELODIES; i++) {
+			printf("Playing melody %ld, %s\n", i,
+					name_melodies[i].name);
+			play_melody(melodies[i]);
+			Pa_Sleep(1000);
 		}
-		Pa_Sleep(1000);
+	}
+	else {
+		char *endptr;
+		errno = 0;
+		int error = 0;
+		long number = strtol(argv[1], &endptr, 10);
+		if ((errno != 0 && number == 0) || *endptr != 0) {
+			fprintf(stderr, "Invalid number given on command line.\n");
+			error = 1;
+		}
+		else if (number < 0 || number >= NUM_MELODIES) {
+			fprintf(stderr, "Number not corresponding to a known melody.\n");
+			error = 1;
+		}
+		if (error) {
+			printf("Known melodies:\n");
+			for (int i = 0; i < NUM_MELODIES; i++) {
+				printf("%3d. %s\n", i, name_melodies[i].name);
+			}
+		}
+		else {
+			printf("Playing melody %ld, %s\n", number,
+					name_melodies[number].name);
+			play_melody(melodies[number]);
+		}
 	}
 
 	err = Pa_StopStream( stream );

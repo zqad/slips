@@ -432,22 +432,26 @@ PROGMEM const struct melody staffan = {
 	},
 };
 
-/*
-PROGMEM const struct melody glans_over_sjo = {
-	.delay_func = delay_2400,
-	.notes = {
-		{ .t=End }
-	},
-};
-*/
+#define MELODIES \
+	MEL(silent_night) \
+	MEL(glans_over_sjo) \
+	MEL(jinglebells) \
+	MEL(mer_jul) \
+	MEL(midnatt_rader) \
+	MEL(natten_gar_tunga) \
+	MEL(staffan)
 
+#define MEL(x) &x,
 const struct melody* melodies[] = {
-	&silent_night,
-	&glans_over_sjo,
-	&jinglebells,
-	&midnatt_rader,
-	&natten_gar_tunga,
-	&staffan,
+	MELODIES
 };
+
+#ifdef SLIPS_TEST
+#undef MEL
+#define MEL(x) { &x, #x },
+const struct name_melody name_melodies[] = {
+	MELODIES
+};
+#endif
 
 const uint8_t NUM_MELODIES = sizeof(melodies)/sizeof(struct melody *);
