@@ -121,7 +121,64 @@ PROGMEM const struct melody glans_over_sjo = {
 		{ .o=4, .t=Gb,	.d=quarter },
 
 		{ .o=4, .t=Gb,	.d=half },
+		{ .o=4, .t=G,	.d=quarter },
+		{ .t=R,		.d=quarter },
+
+		{ .o=4, .t=Ab,	.d=half },
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=F,	.d=quarter },
+
+		{ .o=4, .t=G,	.d=quarter, .dots=1 },
+		{ .o=4, .t=D,	.d=eighth },
+		{ .o=4, .t=D,	.d=half },
+
+		{ .o=4, .t=F,	.d=half },
+		{ .o=4, .t=Eb,	.d=quarter },
+		{ .o=4, .t=D,	.d=quarter },
+
 		{ .o=4, .t=G,	.d=half },
+		{ .o=4, .t=D,	.d=half },
+
+		{ .o=4, .t=E,	.d=whole },
+
+		{ .t=R,		.d=whole },
+
+		{ .o=4, .t=C,	.d=half },
+		{ .o=4, .t=D,	.d=quarter },
+		{ .o=4, .t=E,	.d=quarter },
+
+		{ .o=4, .t=D,	.d=quarter, .dots=1 },
+		{ .o=4, .t=C,	.d=eighth },
+		{ .o=4, .t=C,	.d=half },
+
+		{ .o=4, .t=C,	.d=half },
+		{ .o=4, .t=C,	.d=quarter },
+		{ .o=4, .t=Db,	.d=quarter },
+
+		{ .o=4, .t=Eb,	.d=half },
+		{ .o=4, .t=F,	.d=half },
+
+		{ .o=4, .t=G,	.d=half, .dots=1 },
+		{ .t=R,		.d=quarter },
+
+		{ .o=4, .t=Ab,	.d=half },
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=F,	.d=quarter },
+
+		{ .o=4, .t=Ab,	.d=half },
+		{ .o=4, .t=Eb,	.d=half },
+
+		{ .o=4, .t=C,	.d=half, .dots=1 },
+		{ .t=R,		.d=half },
+
+		{ .o=3, .t=Bb,	.d=half },
+		{ .o=4, .t=D,	.d=quarter },
+		{ .o=4, .t=F,	.d=quarter },
+
+		{ .o=4, .t=Bb,	.d=half },
+		{ .o=4, .t=G,	.d=half },
+
+		{ .o=4, .t=Eb,	.d=whole },
 
 		{ .t=End }
 	},
