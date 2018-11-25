@@ -7,17 +7,11 @@
 #endif
 
 DEFINE_DELAY_FUNC(delay_800, 800)
+DEFINE_DELAY_FUNC(delay_1500, 1500)
 DEFINE_DELAY_FUNC(delay_1800, 1800)
 DEFINE_DELAY_FUNC(delay_2000, 2000)
 DEFINE_DELAY_FUNC(delay_2400, 2400)
 DEFINE_DELAY_FUNC(delay_3600, 3600)
-
-/* TODO, more melodies:
- * - Goderafton
- * - Räven raskar över isen
- * - Uppå källarbacken
- * - We wish you a merry christmas (has sheet)
- */
 
 PROGMEM const struct melody silent_night = {
 	.delay_func = delay_2400,
@@ -590,6 +584,187 @@ PROGMEM const struct melody jul_igen = {
 	},
 };
 
+PROGMEM const struct melody goderafton = {
+	.delay_func = delay_1500,
+	.notes = {
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=quarter },
+		{ .o=4, .t=Fs,	.d=quarter },
+
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=quarter},
+		{ .o=4, .t=Fs,	.d=quarter},
+
+		{ .o=4, .t=A,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+
+		{ .o=4, .t=B,	.d=quarter },
+		{ .o=5, .t=D,	.d=half },
+
+		{ .o=5, .t=D,	.d=quarter },
+		{ .o=5, .t=Cs,	.d=quarter },
+		{ .o=5, .t=Cs,	.d=quarter },
+
+		{ .o=4, .t=B,	.d=eighth },
+		{ .o=4, .t=B,	.d=eighth },
+		{ .o=4, .t=A,	.d=quarter },
+		{ .o=4, .t=A,	.d=quarter },
+
+		{ .o=4, .t=Fs,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+
+		{ .o=4, .t=Cs,	.d=quarter },
+		{ .o=4, .t=D,	.d=half },
+
+		{ .t=End }
+	},
+};
+
+PROGMEM const struct melody raeven = {
+	.delay_func = delay_1500,
+	.notes = {
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=eighth },
+		{ .o=4, .t=E,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+
+		{ .o=4, .t=B,	.d=quarter },
+		{ .o=4, .t=A,	.d=quarter },
+		{ .t=R,		.d=quarter },
+
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=eighth },
+		{ .o=4, .t=E,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+
+		{ .o=4, .t=B,	.d=quarter },
+		{ .o=4, .t=A,	.d=quarter },
+		{ .t=R,		.d=quarter },
+
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=5, .t=D,	.d=quarter, .dots=1 },
+		{ .o=4, .t=A,	.d=eighth },
+
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=5, .t=D,	.d=quarter, .dots=1 },
+		{ .o=4, .t=A,	.d=eighth },
+
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=quarter },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=E,	.d=eighth },
+
+		{ .o=4, .t=E,	.d=quarter },
+		{ .o=4, .t=D,	.d=quarter },
+
+		{ .t=End }
+	},
+};
+
+PROGMEM const struct melody kallarbacken = {
+	.delay_func = delay_1800,
+	.notes = {
+		{ .o=4, .t=C,	.d=eighth, .dots=1 },
+		{ .o=4, .t=A,	.d=sixteenth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+
+		{ .o=4, .t=C,	.d=eighth, .dots=1 },
+		{ .o=4, .t=A,	.d=sixteenth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+
+		{ .o=5, .t=C,	.d=quarter },
+		{ .o=4, .t=F,	.d=quarter },
+		{ .o=4, .t=A,	.d=quarter },
+
+		{ .o=4, .t=G,	.d=half },
+
+		{ .o=4, .t=C,	.d=eighth, .dots=1 },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+
+		{ .o=4, .t=C,	.d=eighth, .dots=1 },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+
+		{ .o=4, .t=Bb,	.d=quarter },
+		{ .o=4, .t=E,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+
+		{ .o=4, .t=F,	.d=half },
+
+		{ .t=End }
+	},
+};
+
+PROGMEM const struct melody we_wish = {
+	.delay_func = delay_1800,
+	.notes = {
+		{ .o=4, .t=C,	.d=quarter },
+		{ .o=4, .t=F,	.d=quarter },
+		{ .o=4, .t=F,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+
+		{ .o=4, .t=F,	.d=eighth },
+		{ .o=4, .t=E,	.d=eighth },
+		{ .o=4, .t=D,	.d=quarter },
+		{ .o=4, .t=D,	.d=quarter },
+
+		{ .o=4, .t=D,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=F,	.d=eighth },
+		{ .o=4, .t=E,	.d=quarter },
+		{ .o=4, .t=E,	.d=quarter },
+
+		{ .o=4, .t=E,	.d=quarter },
+		{ .o=4, .t=A,	.d=quarter },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=Bb,	.d=eighth },
+
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=F,	.d=quarter },
+		{ .o=4, .t=D,	.d=quarter },
+
+		{ .o=4, .t=C,	.d=eighth },
+		{ .o=4, .t=C,	.d=eighth },
+		{ .o=4, .t=D,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+
+		{ .o=4, .t=E,	.d=quarter },
+		{ .o=4, .t=F,	.d=half },
+
+		{ .t=End }
+	},
+};
+
+
 #define MELODIES \
 	MEL(silent_night) \
 	MEL(glans_over_sjo) \
@@ -600,7 +775,11 @@ PROGMEM const struct melody jul_igen = {
 	MEL(staffan) \
 	MEL(rudolf) \
 	MEL(nej_se) \
-	MEL(jul_igen)
+	MEL(jul_igen) \
+	MEL(goderafton) \
+	MEL(raeven) \
+	MEL(kallarbacken) \
+	MEL(we_wish)
 
 #define MEL(x) &x,
 const struct melody* melodies[] = {
