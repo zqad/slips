@@ -15,7 +15,6 @@ DEFINE_DELAY_FUNC(delay_3600, 3600)
 
 /* TODO, more melodies:
  * - Goderafton
- * - Nu är det jul igen
  * - Räven raskar över isen
  * - Uppå källarbacken
  * - We wish you a merry christmas (has sheet)
@@ -532,6 +531,66 @@ PROGMEM const struct melody nej_se = {
 	},
 };
 
+PROGMEM const struct melody jul_igen = {
+	.delay_func = delay_1800,
+	.notes = {
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=D,	.d=eighth },
+		{ .o=3, .t=B,	.d=eighth },
+		{ .o=4, .t=D,	.d=eighth },
+
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=D,	.d=eighth },
+		{ .o=3, .t=B,	.d=eighth },
+		{ .o=4, .t=D,	.d=eighth },
+
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=B,	.d=eighth },
+		{ .o=5, .t=C,	.d=eighth },
+
+		{ .o=5, .t=D,	.d=quarter },
+		{ .o=5, .t=D,	.d=quarter },
+		{ .t=R,		.d=quarter },
+
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=D,	.d=eighth },
+		{ .o=3, .t=B,	.d=eighth },
+		{ .o=4, .t=D,	.d=eighth },
+
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=D,	.d=eighth },
+		{ .o=3, .t=B,	.d=eighth },
+		{ .o=4, .t=D,	.d=eighth },
+
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=Fs,	.d=eighth },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth },
+		{ .o=4, .t=B,	.d=eighth },
+		{ .o=5, .t=C,	.d=eighth },
+
+		{ .o=5, .t=D,	.d=quarter },
+		{ .o=5, .t=D,	.d=quarter },
+
+		{ .t=End }
+	},
+};
+
 #define MELODIES \
 	MEL(silent_night) \
 	MEL(glans_over_sjo) \
@@ -541,7 +600,8 @@ PROGMEM const struct melody nej_se = {
 	MEL(natten_gar_tunga) \
 	MEL(staffan) \
 	MEL(rudolf) \
-	MEL(nej_se)
+	MEL(nej_se) \
+	MEL(jul_igen)
 
 #define MEL(x) &x,
 const struct melody* melodies[] = {
