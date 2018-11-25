@@ -769,7 +769,6 @@ PROGMEM const struct melody we_wish = {
 	MEL(silent_night) \
 	MEL(glans_over_sjo) \
 	MEL(jinglebells) \
-	MEL(mer_jul) \
 	MEL(midnatt_rader) \
 	MEL(natten_gar_tunga) \
 	MEL(staffan) \
