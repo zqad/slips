@@ -15,7 +15,6 @@ DEFINE_DELAY_FUNC(delay_3600, 3600)
 
 /* TODO, more melodies:
  * - Goderafton
- * - Nej, se det snöar
  * - Nu är det jul igen
  * - Räven raskar över isen
  * - Uppå källarbacken
@@ -480,6 +479,59 @@ PROGMEM const struct melody rudolf = {
 	},
 };
 
+PROGMEM const struct melody nej_se = {
+	.delay_func = delay_1800,
+	.notes = {
+		{ .o=4, .t=C,	.d=eighth },
+		{ .o=4, .t=A,	.d=eighth, .dots=1 },
+		{ .o=4, .t=G,	.d=sixteenth },
+
+		{ .o=4, .t=F,	.d=quarter },
+		{ .o=4, .t=F,	.d=eighth },
+		{ .t=R,		.d=sixteenth },
+		{ .o=4, .t=C,	.d=sixteenth },
+		{ .o=4, .t=A,	.d=eighth, .dots=1 },
+		{ .o=4, .t=G,	.d=sixteenth },
+
+		{ .o=4, .t=F,	.d=quarter },
+		{ .o=4, .t=F,	.d=eighth, .dots=1 },
+		{ .o=4, .t=F,	.d=sixteenth },
+		{ .o=4, .t=E,	.d=eighth, .dots=1 },
+		{ .o=4, .t=F,	.d=sixteenth },
+
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=G,	.d=quarter },
+
+		{ .o=4, .t=G,	.d=quarter },
+		{ .t=R,		.d=eighth, .dots=1 },
+		{ .o=4, .t=C,	.d=sixteenth },
+		{ .o=4, .t=Bb,	.d=eighth, .dots=1 },
+		{ .o=4, .t=A,	.d=sixteenth },
+
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=G,	.d=eighth },
+		{ .t=R,		.d=sixteenth },
+		{ .o=4, .t=C,	.d=sixteenth },
+		{ .o=4, .t=Bb,	.d=eighth, .dots=1 },
+		{ .o=4, .t=A,	.d=sixteenth },
+
+		{ .o=4, .t=G,	.d=quarter },
+		{ .o=4, .t=G,	.d=eighth, .dots=1 },
+		{ .o=4, .t=G,	.d=sixteenth },
+		{ .o=4, .t=F,	.d=eighth, .dots=1 },
+		{ .o=4, .t=G,	.d=sixteenth },
+
+		{ .o=4, .t=A,	.d=quarter },
+		{ .o=4, .t=A,	.d=quarter },
+		{ .o=4, .t=A,	.d=quarter },
+
+		{ .o=4, .t=A,	.d=quarter },
+
+		{ .t=End }
+	},
+};
+
 #define MELODIES \
 	MEL(silent_night) \
 	MEL(glans_over_sjo) \
@@ -488,7 +540,8 @@ PROGMEM const struct melody rudolf = {
 	MEL(midnatt_rader) \
 	MEL(natten_gar_tunga) \
 	MEL(staffan) \
-	MEL(rudolf)
+	MEL(rudolf) \
+	MEL(nej_se)
 
 #define MEL(x) &x,
 const struct melody* melodies[] = {
