@@ -6,6 +6,7 @@
 #include <avr/pgmspace.h>
 #endif
 
+DEFINE_DELAY_FUNC(delay_800, 800)
 DEFINE_DELAY_FUNC(delay_1200, 1200)
 DEFINE_DELAY_FUNC(delay_1800, 1800)
 DEFINE_DELAY_FUNC(delay_2000, 2000)
@@ -137,7 +138,7 @@ PROGMEM const struct melody glans_over_sjo = {
 };
 
 PROGMEM const struct melody jinglebells = {
-	.delay_func = delay_1200,
+	.delay_func = delay_800,
 	.notes = {
 		{ .o=4, .t=E,	.d=quarter },
 		{ .o=4, .t=E,	.d=quarter },
