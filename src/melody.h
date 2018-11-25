@@ -51,42 +51,45 @@ struct name_melody {
 	const char *name;
 };
 
-#define _DEFINE_DELAY_FUNC(NAME, WHOLE, INTERNAL_DELAY_FUNC) \
+#define SUB_OR_ZERO(n, s) (((n) < (s)) ? (n) : ((n) - (s)))
+
+#define _DEFINE_DELAY_FUNC(NAME, WHOLE, INTERNAL_DELAY_FUNC, SUB) \
 static void NAME(uint8_t divider, uint8_t dots) { \
 	switch (divider) { \
 	case whole: \
-		INTERNAL_DELAY_FUNC(WHOLE); \
+		INTERNAL_DELAY_FUNC(SUB_OR_ZERO(WHOLE, SUB)); \
 		if (!dots--) \
 			break; \
 	case half: \
-		INTERNAL_DELAY_FUNC(WHOLE/2); \
+		INTERNAL_DELAY_FUNC(SUB_OR_ZERO(WHOLE/2, SUB)); \
 		if (!dots--) \
 			break; \
 	case quarter: \
-		INTERNAL_DELAY_FUNC(WHOLE/4); \
+		INTERNAL_DELAY_FUNC(SUB_OR_ZERO(WHOLE/4, SUB)); \
 		if (!dots--) \
 			break; \
 	case eighth: \
-		INTERNAL_DELAY_FUNC(WHOLE/8); \
+		INTERNAL_DELAY_FUNC(SUB_OR_ZERO(WHOLE/8, SUB)); \
 		if (!dots--) \
 			break; \
 	case sixteenth: \
-		INTERNAL_DELAY_FUNC(WHOLE/16); \
+		INTERNAL_DELAY_FUNC(SUB_OR_ZERO(WHOLE/16, SUB)); \
 		if (!dots--) \
 			break; \
-		INTERNAL_DELAY_FUNC(WHOLE/32); \
+		INTERNAL_DELAY_FUNC(SUB_OR_ZERO(WHOLE/32, SUB)); \
 		if (!dots--) \
 			break; \
-		INTERNAL_DELAY_FUNC(WHOLE/64); \
+		INTERNAL_DELAY_FUNC(SUB_OR_ZERO(WHOLE/64, SUB)); \
 	} \
 }
 
 #ifdef SLIPS_TEST
 #include "portaudio.h"
-#define DEFINE_DELAY_FUNC(NAME, WHOLE) _DEFINE_DELAY_FUNC(NAME, WHOLE, Pa_Sleep)
+#define DEFINE_DELAY_FUNC(NAME, WHOLE) _DEFINE_DELAY_FUNC(NAME, WHOLE, Pa_Sleep, 0)
 #else
 #include <util/delay.h>
-#define DEFINE_DELAY_FUNC(NAME, WHOLE) _DEFINE_DELAY_FUNC(NAME, WHOLE, _delay_ms)
+/* Deduct the LED flashing time from the delay */
+#define DEFINE_DELAY_FUNC(NAME, WHOLE) _DEFINE_DELAY_FUNC(NAME, WHOLE, _delay_ms, 50)
 #endif
 
 #endif

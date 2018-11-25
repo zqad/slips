@@ -213,13 +213,8 @@ static void play(const struct melody *melody_pgm) {
 	uint16_t _delay_func = pgm_read_word_near(&melody_pgm->delay_func);
 	void (*delay_func)(uint8_t, uint8_t) = (void (*)(uint8_t, uint8_t))_delay_func;
 
+	uint8_t last_had_tie = 0;
 	for (uint8_t i = 0; 1; i++) {
-		/* Alternate LED */
-		if (i & 1)
-			LED_OFF();
-		else
-			LED_ON();
-
 		/* Read the note from the melody */
 		uint16_t _note = pgm_read_word_near(&melody_pgm->notes[i]);
 		struct note *note = (struct note *)&_note;
@@ -231,6 +226,11 @@ static void play(const struct melody *melody_pgm) {
 		/* Is it a rest? */
 		if (note->t == R)
 			goto rest;
+
+		/* Light LED unless this note is part of a tie */
+		if (!last_had_tie)
+			LED_ON();
+		last_had_tie = note->tie;
 
 		/* Read the values needed to configure the PWM */
 		uint16_t _avr_note = pgm_read_word_near(&octaves[note->o].notes[note->t]);
@@ -244,8 +244,12 @@ static void play(const struct melody *melody_pgm) {
 		OCR1A = avr_note->OCRxn - 1;
 		OCR1C = avr_note->OCRxn * 2;
 
-		/* Play the note */
 rest:
+		/* Let the LED shine for a bit */
+		_delay_ms(50);
+		LED_OFF();
+
+		/* Play the note (or rest) */
 		delay_func(note->d, note->dots);
 
 		/* Terminate the note unless there is a tie marker */
